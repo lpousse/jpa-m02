@@ -1,10 +1,13 @@
 package fr.diginamic.jpa.entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +23,9 @@ public class Livre {
 	
 	@Column(name = "auteur")
 	private String auteur;
+	
+	@ManyToMany(mappedBy = "livres")
+	private Set<Emprunt> emprunts;
 
 	public Livre() {
 	}

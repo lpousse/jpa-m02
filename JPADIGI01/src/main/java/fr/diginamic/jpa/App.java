@@ -42,8 +42,7 @@ public class App {
 				em.getTransaction().rollback();
 			}
 
-			TypedQuery<Fournisseur> qf = em.createQuery(
-					"SELECT fo FROM Fournisseur fo", Fournisseur.class);
+			TypedQuery<Fournisseur> qf = em.createQuery("SELECT fo FROM Fournisseur fo", Fournisseur.class);
 			List<Fournisseur> lfo = qf.getResultList();
 			lfo.stream().forEach(f -> System.out.println(f.getNom()));
 
