@@ -20,12 +20,10 @@ public class TestJpa {
 			Livre l1 = em.find(Livre.class, 2);
 			System.out.println(l1);
 
-			/*
 			em.getTransaction().begin();
 			Livre l2 = new Livre("Blame!", "Tsutomu Nihei");
 			em.persist(l2);
 			em.getTransaction().commit();
-			*/
 			
 			em.getTransaction().begin();
 			Livre l3 = em.find(Livre.class, 5);
