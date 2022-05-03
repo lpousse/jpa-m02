@@ -4,20 +4,13 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "livre")
-public class Livre {
+public class Livre extends BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
 	@Column(name = "titre")
 	private String titre;
 	
@@ -33,14 +26,6 @@ public class Livre {
 	public Livre(String titre, String auteur) {
 		this.titre = titre;
 		this.auteur = auteur;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getTitre() {

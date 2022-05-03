@@ -28,6 +28,8 @@ public class TestBibliotheque {
 			
 			em.close();
 			emf.close();
+			
+			
 		}
 		catch (Exception e) {
 			System.err.println(e.getMessage());

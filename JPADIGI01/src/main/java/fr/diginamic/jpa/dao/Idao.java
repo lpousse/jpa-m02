@@ -1,0 +1,15 @@
+package fr.diginamic.jpa.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
+public interface Idao<T> {
+
+	boolean add(T e) throws Exception;
+	boolean update(T e) throws Exception;
+	boolean delete(T e) throws Exception;
+	T getOne(T e) throws Exception;
+	List<T> getAll() throws Exception;
+
+}
