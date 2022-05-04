@@ -4,8 +4,8 @@ import fr.diginamic.jpa.entities.Livre;
 
 public class LivreDao extends Dao<Livre> {
 
-	public LivreDao(EmfManager fd) {
-		super(fd, Livre.class);
+	public LivreDao(EmfManager emfm) {
+		super(emfm, Livre.class);
 	}
 	
 }

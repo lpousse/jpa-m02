@@ -1,13 +1,18 @@
 package fr.diginamic.jpa.entities;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -32,8 +37,15 @@ public class Bon {
 	@ManyToOne
 	@JoinColumn(name = "ID_FOU", nullable = false)
 	private Fournisseur foBon;
-
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "REL_BON_ART",
+			joinColumns = @JoinColumn(name = "ID_BON", referencedColumnName = "ID"),
+			inverseJoinColumns = @JoinColumn(name = "ID_ART", referencedColumnName = "ID"))
+	private Set<Article> bonArticles;
+	
 	public Bon() {
+		bonArticles = new HashSet<>();
 	}
 
 	public int getId() {
@@ -74,6 +86,14 @@ public class Bon {
 
 	public void setFoBon(Fournisseur foBon) {
 		this.foBon = foBon;
+	}
+
+	public Set<Article> getBonArticles() {
+		return bonArticles;
+	}
+
+	public void setBonArticles(Set<Article> bonArticles) {
+		this.bonArticles = bonArticles;
 	}
 
 	@Override

@@ -1,12 +1,12 @@
-package fr.diginamic.jpa.dao.impl;
+package fr.diginamic.banque.dao.impl;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import fr.diginamic.jpa.dao.Idao;
-import fr.diginamic.jpa.entities.BaseEntity;
+import fr.diginamic.banque.dao.Idao;
+import fr.diginamic.banque.entities.BaseEntity;
 
 public class Dao<T extends BaseEntity> implements Idao<T> {
 

@@ -16,7 +16,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "fournisseur")
 @NamedQueries({
-	@NamedQuery(name = "Fournisseur.getBons", query = "select b from Bon b where b.foBon.id = :id")
+	@NamedQuery(name = "Fournisseur.getBons", query = "select b from Bon b where b.foBon.id = :id"),
+	@NamedQuery(name="Fournisseur.getArticles", query="select a from Article a where a.foArticle.id = :id")
 })
 public class Fournisseur {
 

@@ -4,8 +4,8 @@ import fr.diginamic.jpa.entities.Client;
 
 public class ClientDao extends Dao<Client> {
 
-	public ClientDao(EmfManager fd) {
-		super(fd, Client.class);
+	public ClientDao(EmfManager emfm) {
+		super(emfm, Client.class);
 	}
 
 }

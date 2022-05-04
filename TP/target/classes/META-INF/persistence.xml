@@ -4,14 +4,45 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-	<persistence-unit name="bddBiblio" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="bddBiblio"
+		transaction-type="RESOURCE_LOCAL">
+		<class>fr.diginamic.jpa.entities.Client</class>
+		<class>fr.diginamic.jpa.entities.Emprunt</class>
+		<class>fr.diginamic.jpa.entities.Livre</class>
 		<properties>
+			<property name="hibernate.archive.autodetection" value="" />
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost:3306/bibliom02" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<!-- 'validate' en prod -->
+			<!-- 'create' ou 'create-drop' en mode dev ou test -->
+		</properties>
+	</persistence-unit>
+	<persistence-unit name="bddBanque"
+		transaction-type="RESOURCE_LOCAL">
+		<class>fr.diginamic.banque.entities.Banque</class>
+		<class>fr.diginamic.banque.entities.Client</class>
+		<class>fr.diginamic.banque.entities.Compte</class>
+		<class>fr.diginamic.banque.entities.Operation</class>
+		<properties>
+			<property name="hibernate.archive.autodetection" value="" />
+			<property name="javax.persistence.jdbc.driver"
+				value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://localhost:3306/banquem02" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="" />
+			<property
+				name="javax.persistence.schema-generation.database.action"
+				value="drop-and-create" />
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			<property name="hibernate.show_sql" value="true" />

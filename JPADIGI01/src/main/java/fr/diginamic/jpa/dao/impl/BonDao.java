@@ -44,7 +44,8 @@ public class BonDao extends Dao implements Idao<Bon> {
 				etrans.setDelai(e.getDelai());
 				etrans.setNumero(e.getNumero());
 				etrans.setFoBon(e.getFoBon());
-				//em.merge(etrans);
+				etrans.setBonArticles(e.getBonArticles());
+				em.merge(etrans);
 				em.getTransaction().commit();
 				return true;
 			}
@@ -82,9 +83,17 @@ public class BonDao extends Dao implements Idao<Bon> {
 
 	@Override
 	public Bon getOne(Bon e) throws Exception {
-		TypedQuery<Bon> tqb = fd.getEm().createQuery("select bon from Bon bon where bon.id = :id", Bon.class);
-		tqb.setParameter("id", e.getId());
-		return tqb.getResultList().get(0);
+		EntityManager em = null;
+		try {
+			em = fd.getEm();
+			TypedQuery<Bon> tqb = em.createQuery("select bon from Bon bon where bon.id = :id", Bon.class);
+			tqb.setParameter("id", e.getId());
+
+			return tqb.getResultList().get(0);
+		}
+		finally {
+			fd.close(em);
+		}
 	}
 
 	@Override
