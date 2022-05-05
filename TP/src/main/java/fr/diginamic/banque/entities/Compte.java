@@ -2,10 +2,13 @@ package fr.diginamic.banque.entities;
 
 
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @NamedQueries({
 	@NamedQuery(name = "Compte.getClients", query = "select cl from Client cl where :compte MEMBER OF cl.comptes"),
 	@NamedQuery(name = "Compte.getOperations", query = "select o from Operation o where o.compte.id = :id")

@@ -2,11 +2,18 @@ package fr.diginamic.banque.entities;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type")
+@DiscriminatorValue("O")
 public class Operation extends BaseEntity {
 
 	private LocalDateTime date;

@@ -28,10 +28,13 @@
 	</persistence-unit>
 	<persistence-unit name="bddBanque"
 		transaction-type="RESOURCE_LOCAL">
+		<class>fr.diginamic.banque.entities.AssuranceVie</class>
 		<class>fr.diginamic.banque.entities.Banque</class>
 		<class>fr.diginamic.banque.entities.Client</class>
 		<class>fr.diginamic.banque.entities.Compte</class>
+		<class>fr.diginamic.banque.entities.LivretA</class>
 		<class>fr.diginamic.banque.entities.Operation</class>
+		<class>fr.diginamic.banque.entities.Virement</class>
 		<properties>
 			<property name="hibernate.archive.autodetection" value="" />
 			<property name="javax.persistence.jdbc.driver"
@@ -47,7 +50,7 @@
 				value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="false" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<!-- 'validate' en prod -->
 			<!-- 'create' ou 'create-drop' en mode dev ou test -->
 		</properties>
